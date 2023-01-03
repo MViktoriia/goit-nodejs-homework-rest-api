@@ -1,7 +1,6 @@
 const express = require("express");
 
 const ctrl = require("../../controllers/contacts");
-const removeById = require("../../controllers/contacts/removeById");
 const { ctrlWrapper } = require("../../helpers");
 const validateBody = require("../../middlewares/validateBody");
 const schemas = require("../../schemas/contacts");
@@ -20,6 +19,6 @@ router.put(
   ctrlWrapper(ctrl.updateById)
 );
 
-router.delete("/:contactId", ctrlWrapper(removeById));
+router.delete("/:contactId", ctrlWrapper(ctrl.removeById));
 
 module.exports = router;

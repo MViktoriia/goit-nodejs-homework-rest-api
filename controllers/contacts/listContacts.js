@@ -1,9 +1,11 @@
 const Contact = require("../../models/contact");
 
 const listContacts = async (req, res, next) => {
-  const result = await Contact.find();
+	const { _id: owner } = req.user;
+	console.log(owner);
+	const result = await Contact.find({ owner });
 
-  res.json(result);
+	res.json(result);
 };
 
 module.exports = listContacts;
